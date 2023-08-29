@@ -13,8 +13,8 @@ to be added.
 
 ## Project Documents
 
-All project documents are in the [Project Wiki](../../wiki/Home).
+All project documents are in the [Project Wiki](github.com/KunKid-cmd/wiki/Home).
 
-- [Vision Statement](../../wiki/Vision%20Statement)
-- [Requirements](../../wiki/Requirements)
-- [Development Plan](../../wiki/Requirements)
+- [Vision Statement](github.com/KunKid-cmd/wiki/Vision%20Statement)
+- [Requirements](github.com/KunKid-cmd/wiki/Requirements)
+- [Development Plan](github.com/KunKid-cmd/wiki/Requirements)
