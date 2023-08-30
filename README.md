@@ -13,7 +13,7 @@ to be added.
 
 ## Project Documents
 
-All project documents are in the [Project Wiki](github.com/KunKid-cmd/wiki/Home).
+All project documents are in the [Project Wiki](https://github.com/KunKid-cmd/ku-polls/wiki).
 
 - [Vision Statement](https://github.com/KunKid-cmd/ku-polls/wiki/Vision-Statement)
 - [Requirements](https://github.com/KunKid-cmd/ku-polls/wiki/Requirements)
