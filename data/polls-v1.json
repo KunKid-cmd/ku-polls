@@ -1,36 +1,72 @@
 [
 {
   "model": "polls.question",
-  "pk": 1,
+  "pk": 3,
   "fields": {
-    "question_text": "What's up?",
-    "pub_date": "2023-09-02T13:56:12Z"
+    "question_text": "What's your preferred method of relaxation",
+    "pub_date": "2023-09-02T16:27:41.593Z"
   }
 },
 {
   "model": "polls.question",
-  "pk": 2,
+  "pk": 4,
   "fields": {
-    "question_text": "test to vote",
-    "pub_date": "2023-09-02T15:55:16Z"
+    "question_text": "What's your favorite type of travel experience?",
+    "pub_date": "2023-09-02T16:33:39.319Z"
   }
 },
 {
   "model": "polls.choice",
-  "pk": 1,
+  "pk": 4,
   "fields": {
-    "question": 1,
-    "choice_text": "Not much",
-    "votes": 3
+    "question": 3,
+    "choice_text": "Sleep.zZZ",
+    "votes": 0
   }
 },
 {
   "model": "polls.choice",
-  "pk": 2,
+  "pk": 5,
   "fields": {
-    "question": 1,
-    "choice_text": "The sky",
-    "votes": 2
+    "question": 3,
+    "choice_text": "Play game.OUO",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 6,
+  "fields": {
+    "question": 3,
+    "choice_text": "Read book or comic.",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 7,
+  "fields": {
+    "question": 4,
+    "choice_text": "Cultural Exploration",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 8,
+  "fields": {
+    "question": 4,
+    "choice_text": "Adventure Travel",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 9,
+  "fields": {
+    "question": 4,
+    "choice_text": "Countryside Breaks",
+    "votes": 0
   }
 }
 ]
