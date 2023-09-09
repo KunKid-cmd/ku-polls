@@ -44,7 +44,7 @@ class QuestionModelTests(TestCase):
         """
         future_time = timezone.now() + timezone.timedelta(days=1)
         question = Question(pub_date=future_time)
-        self.assertFalse(question.is_published(), False)
+        self.assertFalse(question.is_published())
 
     def test_default_pub_date(self):
         """
@@ -53,7 +53,7 @@ class QuestionModelTests(TestCase):
         """
         time_now = timezone.now()
         question = Question(pub_date=time_now)
-        self.assertTrue(question.is_published(), True)
+        self.assertTrue(question.is_published())
 
     def test_past_pub_date(self):
         """
@@ -62,7 +62,46 @@ class QuestionModelTests(TestCase):
         """
         past_time = timezone.now() - timezone.timedelta(days=1)
         question = Question(pub_date=past_time)
-        self.assertTrue(question.is_published(), True)
+        self.assertTrue(question.is_published())
+
+    def test_can_vote_with_no_end_date(self):
+        """
+        Check can_vote when there is no end date set.
+        :return True
+        """
+        time_now = timezone.now()
+        question = Question(pub_date=time_now)
+        self.assertTrue(question.can_vote())
+
+    def test_can_vote_before_end_date(self):
+        """
+        Check the can_vote when the current date is before the end date.
+        :return True
+        """
+        time_now = timezone.now()
+        end_date = time_now + timezone.timedelta(days=10)
+        question = Question(pub_date=time_now, end_date=end_date)
+        self.assertTrue(question.can_vote())
+
+    def test_cannot_vote_after_end_date(self):
+        """
+        Check can_vote when the end date is in the past.
+        :return False
+        """
+        time_now = timezone.now()
+        end_date = time_now - timezone.timedelta(days=10)
+        question = Question(pub_date=time_now, end_date=end_date)
+        self.assertFalse(question.can_vote())
+
+    def test_cannot_vote_before_pub_date(self):
+        """
+        Check can_vote when the current date is before the pub_date.
+        :return False
+        """
+        time_now = timezone.now()
+        pub_date = time_now + timezone.timedelta(days=10)
+        question = Question(pub_date=pub_date)
+        self.assertFalse(question.can_vote())
 
 
 def create_question(question_text, days):
