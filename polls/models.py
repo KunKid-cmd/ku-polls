@@ -6,24 +6,26 @@ from django.contrib import admin
 
 
 class Question(models.Model):
+    """ attribute of a question in a poll."""
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
+    end_date = models.DateTimeField('date ended', null=True)
 
     def __str__(self):
+        """Returns a string of the question."""
         return self.question_text
-
-    def was_published_recently(self):
-        now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
     @admin.display(
         boolean=True,
         ordering='pub_date',
         description='Published recently?',
     )
+
     def was_published_recently(self):
+        """to check is the polls published date within last day."""
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+
 
 
 
