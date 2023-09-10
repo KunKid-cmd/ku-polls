@@ -32,6 +32,9 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())
 
     def get(self, request, *args, **kwargs):
+        """
+        Handles the HTTP GET request for the poll detail page.
+        """
         try:
             self.question = self.get_object()
         except Exception:
