@@ -32,8 +32,7 @@ class Question(models.Model):
         :return:
         True if the current date is on or after question’s publication date
         """
-        now = timezone.now()
-        return now >= self.pub_date
+        return timezone.now() >= self.pub_date
 
     def can_vote(self):
         """
