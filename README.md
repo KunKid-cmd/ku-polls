@@ -20,4 +20,5 @@ All project documents are in the [Project Wiki](https://github.com/KunKid-cmd/ku
 - [Requirements](https://github.com/KunKid-cmd/ku-polls/wiki/Requirements)
 - [Development Plan](https://github.com/KunKid-cmd/ku-polls/wiki/Development-Plan)
 - [Iteration 1 Plan](https://github.com/KunKid-cmd/ku-polls/wiki/Iteration-1-Plan)
+- [Iteration 2 Plan](https://github.com/KunKid-cmd/ku-polls/wiki/Iteration-2-Plan)
 - [Task Board](https://github.com/users/KunKid-cmd/projects/1)
