@@ -9,7 +9,8 @@ class Question(models.Model):
     """ attribute of a question in a poll."""
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published',  default=timezone.now)
-    end_date = models.DateTimeField('date ended', null=True)
+    end_date = models.DateTimeField('date ended', default=None, null=True,
+                                    blank=True)
 
     def __str__(self):
         """Returns a string of the question."""
