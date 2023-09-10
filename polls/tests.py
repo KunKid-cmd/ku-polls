@@ -104,14 +104,19 @@ class QuestionModelTests(TestCase):
         self.assertFalse(question.can_vote())
 
 
-def create_question(question_text, days):
+def create_question(question_text, days=0, day_end=0):
     """
     Create a question with the given `question_text` and published the
     given number of `days` offset to now (negative for questions published
     in the past, positive for questions that have yet to be published).
     """
     time = timezone.now() + datetime.timedelta(days=days)
-    return Question.objects.create(question_text=question_text, pub_date=time)
+    if not day_end:
+        return Question.objects.create(question_text=question_text,
+                                       pub_date=time)
+    end_time = time + datetime.timedelta(days=day_end)
+    return Question.objects.create(question_text=question_text, pub_date=time,
+                                   end_date=end_time)
 
 
 class QuestionIndexViewTests(TestCase):
