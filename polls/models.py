@@ -8,7 +8,7 @@ from django.utils import timezone
 class Question(models.Model):
     """ attribute of a question in a poll."""
     question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published', auto_now_add=False)
+    pub_date = models.DateTimeField('date published',  default=timezone.now)
     end_date = models.DateTimeField('date ended', null=True)
 
     def __str__(self):

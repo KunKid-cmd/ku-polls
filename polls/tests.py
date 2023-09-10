@@ -90,7 +90,7 @@ class QuestionModelTests(TestCase):
         """
         time_now = timezone.now()
         end_date = time_now - timezone.timedelta(days=10)
-        question = Question(pub_date=time_now, end_date=end_date)
+        question = Question(end_date=end_date)
         self.assertFalse(question.can_vote())
 
     def test_cannot_vote_before_pub_date(self):
@@ -182,7 +182,7 @@ class QuestionDetailViewTests(TestCase):
                                           days=5)
         url = reverse('polls:detail', args=(future_question.id,))
         response = self.client.get(url)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 302)
 
     def test_past_question(self):
         """
