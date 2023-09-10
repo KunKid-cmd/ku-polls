@@ -1,5 +1,5 @@
-[![Django CI](https://github.com/KunKid-cmd/ku-polls/actions/workflows/django_tester.yml/badge.svg)](https://github.com/KunKid-cmd/ku-polls/actions/workflows/django_tester.yml)
 # KU Polls: Online Survey Questions 
+[![Django CI](https://github.com/KunKid-cmd/ku-polls/actions/workflows/django_tester.yml/badge.svg)](https://github.com/KunKid-cmd/ku-polls/actions/workflows/django_tester.yml)
 
 An application to conduct online polls and surveys based
 on the [Django Tutorial project](https://www.djangoproject.com/), with
