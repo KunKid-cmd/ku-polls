@@ -1,11 +1,12 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.views import generic
 
-from .models import Choice, Question
+from .models import Choice, Question, Vote
 
 
 class IndexView(generic.ListView):
@@ -55,8 +56,16 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
+# need import \/
+@login_required
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
+
+    if not question.can_vote():
+        messages.error(request, f"poll number {question.id}"
+                                f"is not available to vote.")
+        return redirect("polls:index")
+
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
@@ -65,11 +74,20 @@ def vote(request, question_id):
             'question': question,
             'error_message': "You didn't select a choice.",
         })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        return HttpResponseRedirect(
-            # Always return an HttpResponseRedirect after successfully dealing
-            # with POST data. This prevents data from being posted twice if a
-            # user hits the Back button.
-            reverse('polls:results', args=(question.id,)))
+
+    this_user = request.user
+    # selected_choice.votes += 1
+    # selected_choice.save()
+    try:
+        """find a vote for this user and this question"""
+        vote = Vote.objects.get(user=this_user, choice__question=question)
+        # update his vote
+        vote.choice = selected_choice
+    except Vote.DoesNotExist:
+        vote = Vote(user = this_user,choice = selected_choice)
+
+    vote.save()
+        # TODO:use messages to display a confirmation on the results page.
+
+    return HttpResponseRedirect(
+        reverse('polls:results', args=(question.id,)))
