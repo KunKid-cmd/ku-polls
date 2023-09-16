@@ -37,18 +37,27 @@ class DetailView(generic.DetailView):
         Handles the HTTP GET request for the poll detail page.
         """
         try:
-            self.question = self.get_object()
-        except Exception:
+            question = get_object_or_404(Question, pk=kwargs['pk'])
+        except Question.DoesNotExist:
             messages.error(request,
                            f"Poll number {kwargs['pk']} does not exist.")
             return redirect("polls:index")
+
+        this_user = request.user
+        try:
+            prev_vote = Vote.objects.get(user=this_user,
+                                         choice__question=question)
+        except Vote.DoesNotExist:
+            prev_vote = None
+
+        if not question.can_vote():
+            messages.error(request, f"Poll question {kwargs['pk']}"
+                                    f" not allow to voting.")
+            return redirect("polls:index")
         else:
-            if not self.question.can_vote():
-                messages.error(request,
-                               f"Poll number {kwargs['pk']} not allow voting.")
-                return redirect("polls:index")
-            else:
-                return super().get(request, *args, **kwargs)
+            return render(request, self.template_name,
+                          {"question": question,
+                           "prev_vote": prev_vote})
 
 
 class ResultsView(generic.DetailView):
@@ -76,18 +85,18 @@ def vote(request, question_id):
         })
 
     this_user = request.user
-    # selected_choice.votes += 1
-    # selected_choice.save()
     try:
         """find a vote for this user and this question"""
         vote = Vote.objects.get(user=this_user, choice__question=question)
         # update his vote
         vote.choice = selected_choice
     except Vote.DoesNotExist:
-        vote = Vote(user = this_user,choice = selected_choice)
+        vote = Vote(user=this_user, choice=selected_choice)
 
     vote.save()
-        # TODO:use messages to display a confirmation on the results page.
+    messages.success(request,
+                     f'Your last vote is {selected_choice.choice_text}'
+                     f' has been saved.')
 
     return HttpResponseRedirect(
         reverse('polls:results', args=(question.id,)))

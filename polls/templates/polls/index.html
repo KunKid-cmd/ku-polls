@@ -8,9 +8,10 @@
 </div>
 
 {% if user.is_authenticated %}
-    <p style="color:green;">welcome back, {{user.username}}</p>
+    <h3 style="color:green;">welcome back, {{user.username}}</h3>
+    <a href="{% url 'logout' %}" style="color:red;">Logout</a>
 {% else %}
-    Please <a href="{% url 'login'%}" style="color:green;">Login</a>to vote
+    <h3 style="color:green;">Please <a href="{% url 'login' %}" style="color:red;">Login</a> to vote</h3>
 {% endif %}
 
 {% if messages %}
@@ -29,7 +30,11 @@
         </tr>
         {% for question in latest_question_list %}
             <tr>
+                {% if user.is_authenticated %}
                 <td><a href="{% url 'polls:detail' question.id %}" style="color:green;">{{ question.question_text }}</a></td>
+                {% else %}
+                <td><p style="color:green;"> {{ question.question_text }}</p></td>
+                {% endif %}
                 <td><a href="{% url 'polls:results' question.id %}" style="color:green;">Show Result</a></td>
             </tr>
         {% endfor %}

@@ -10,6 +10,10 @@
   </p>
   <input type="hidden" name="next" value="{{next}}"/>
  </form>
- {# If you have a sign-up page, then add a link here #}
+  <p>
+      For new user please
+  <a href="{% url 'signup' %}">Signup</a>.
+  </p>
+  <a href="{% url 'polls:index' %}">back to polls</a>
 </body>
 </html>
