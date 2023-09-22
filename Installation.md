@@ -18,18 +18,14 @@ git clone https://github.com/KunKid-cmd/ku-polls.git
 ## Step 2: Check the directory
 To ensure that your are in the correct directory (ku-polls), run the following command:
 
-Windows:
+Windows / macOS:
 ```commandline
-cd
+cd 
+cd ku-polls
 ```
-
-macOS / Linux:
+Linux:
 ```commandline
 pwd
-```
-
-If you are not in the correct directory, navigate to the project directory before proceeding with the installation:
-```commandline
 cd ku-polls
 ```
 ## Step 3: Create and activate a virtual environment:
