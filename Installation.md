@@ -6,8 +6,8 @@
 #### [Step 3](#step-3-Create-and-activate-a-virtual-environment): Create and activate a virtual environment
 #### [Step 4](#step-4-Create-a-.env-file): Create a `.env` file 
 #### [Step 5](#step-5-install-the-required-modules): Install the Required Modules
-#### [Step 5](#step-6-database-migrations): Database Migrations
-#### [Step 6](#step-7-run-tests): Run Tests
+#### [Step 6](#step-6-database-migrations): Database Migrations
+#### [Step 7](#step-7-run-tests): Run Tests
 
 ## Step 1: Clone the repository
 Clone the repository and using this command on terminal:
