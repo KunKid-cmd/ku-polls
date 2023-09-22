@@ -4,7 +4,7 @@
   "pk": 3,
   "fields": {
     "question_text": "What's your preferred method of relaxation",
-    "pub_date": "2023-09-02T16:27:41.593Z",
+    "pub_date": "2023-09-02T16:27:41Z",
     "end_date": null
   }
 },
@@ -13,8 +13,8 @@
   "pk": 4,
   "fields": {
     "question_text": "What's your favorite type of travel experience?",
-    "pub_date": "2023-09-02T16:33:39.319Z",
-    "end_date": null
+    "pub_date": "2023-09-02T15:38:41Z",
+    "end_date": "2023-09-06T15:38:56Z"
   }
 },
 {
@@ -22,7 +22,7 @@
   "pk": 4,
   "fields": {
     "question": 3,
-    "choice_text": "Sleep.zZZ"
+    "choice_text": "Sleep."
   }
 },
 {
@@ -30,7 +30,7 @@
   "pk": 5,
   "fields": {
     "question": 3,
-    "choice_text": "Play game.OUO"
+    "choice_text": "Play game."
   }
 },
 {
@@ -46,7 +46,7 @@
   "pk": 7,
   "fields": {
     "question": 4,
-    "choice_text": "Cultural Exploration"
+    "choice_text": "Cultural Exploration."
   }
 },
 {
@@ -54,7 +54,7 @@
   "pk": 8,
   "fields": {
     "question": 4,
-    "choice_text": "Adventure Travel"
+    "choice_text": "Adventure Travel."
   }
 },
 {
@@ -62,23 +62,87 @@
   "pk": 9,
   "fields": {
     "question": 4,
-    "choice_text": "Countryside Breaks"
+    "choice_text": "Beach and Relaxation."
   }
 },
 {
-  "model": "polls.vote",
-  "pk": 1,
+  "model": "polls.choice",
+  "pk": 16,
   "fields": {
-    "choice": 8,
-    "user": 2
+    "question": 3,
+    "choice_text": "Art and Creativity."
   }
 },
 {
-  "model": "polls.vote",
-  "pk": 2,
+  "model": "polls.choice",
+  "pk": 17,
   "fields": {
-    "choice": 6,
-    "user": 2
+    "question": 3,
+    "choice_text": "Yoga."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 3,
+    "choice_text": "meditation."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 4,
+    "choice_text": "Historical and Heritage Tours."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 20,
+  "fields": {
+    "question": 4,
+    "choice_text": "Wildlife and Nature Safaris."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 21,
+  "fields": {
+    "question": 4,
+    "choice_text": "City Exploration."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 22,
+  "fields": {
+    "question": 4,
+    "choice_text": "Road Trips."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 4,
+    "choice_text": "Cruise Travel."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 4,
+    "choice_text": "Solo Travel."
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 25,
+  "fields": {
+    "question": 4,
+    "choice_text": "Volunteer and Service Travel."
   }
 },
 {
