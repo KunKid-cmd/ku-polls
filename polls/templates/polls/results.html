@@ -1,26 +1,29 @@
     {% load static %}
      <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-<h1 style="color:green;">{{ question.question_text }}</h1>
+     <link rel="stylesheet" href="{% static 'polls/results.css' %}">
+<body>
+    <h1 style="color:white;" class="question">{{ question.question_text }}</h1>
 {% if messages %}
 <ul>
     {% for msg in messages %}
-        <li class="{{msg.tags}}" style="color:green;">{{ msg }}</li>
+        <li class="{{msg.tags}}" style="color:white;">{{ msg }}</li>
     {% endfor %}
 </ul>
 {% endif %}
 <ul>
     <table>
             <tr>
-                <th style="color:green;">Choice</th>
-                <th style="color:green;">Vote</th>
+                <th style="color:white;">Choice</th>
+                <th style="color:red;">Vote</th>
             </tr>
         {% for choice in question.choice_set.all %}
             <tr>
-                <td style="color:green;">{{ choice.choice_text }}</td>
-                <td style="color:green;">{{ choice.votes }}</td>
+                <td style="color:white;">{{ choice.choice_text }}</td>
+                <td style="color:white;">{{ choice.votes }}</td>
             </tr>
         {% endfor %}
     </table>
 </ul>
 
-<a href="{% url 'polls:index' %}" style="color:green;">Back to List of Polls.</a>
+<a href="{% url 'polls:index' %}" style="color:red;" class="result">Back to List of Polls.</a>
+</body>

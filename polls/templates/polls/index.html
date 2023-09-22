@@ -1,45 +1,50 @@
 <title>Ku polls</title>
 {% load static %}
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-
-
+<link rel="stylesheet" href="{% static 'polls/color.css' %}">
+<body>
 <div class="banner">
-    <h1 style="color:green;">Ku polls</h1>
+    <h1>Ku polls</h1>
 </div>
 
 {% if user.is_authenticated %}
-    <h3 style="color:green;">welcome back, {{user.username}}</h3>
-    <a href="{% url 'logout' %}" style="color:red;">Logout</a>
+<h3 style="color:white; margin-left: 50px;">welcome back,
+    {{user.username}}</h3>
+<a href="{% url 'logout' %}" style="color:red; margin-left: 50px;">Logout</a>
 {% else %}
-    <h3 style="color:green;">Please <a href="{% url 'login' %}" style="color:red;">Login</a> to vote</h3>
+<h3 style="color:white; margin-left: 50px;">Please <a href="{% url 'login' %}" style="color:red;">Login</a>
+    to vote</h3>
 {% endif %}
 
 {% if messages %}
 <ul class="text">
     {% for msg in messages %}
-    <li style="color:green;" class="{{msg.tags}}">{{ msg }}</li>
+    <li style="color:white;" class="{{msg.tags}}">{{ msg }}</li>
     {% endfor %}
 </ul>
 {% endif %}
 {% if latest_question_list %}
 <ul>
-    <table>
-        <tr>
-            <th style="color:green;">Poll question</th>
-            <th style="color:green;">Result question</th>
+    <table class="table_question">
+        <tr class="head_question">
+            <th style="color:white;" class="poll_question">Poll question</th>
+            <th style="color:white;">Result question</th>
         </tr>
         {% for question in latest_question_list %}
-            <tr>
-                {% if user.is_authenticated %}
-                <td><a href="{% url 'polls:detail' question.id %}" style="color:green;">{{ question.question_text }}</a></td>
-                {% else %}
-                <td><p style="color:green;"> {{ question.question_text }}</p></td>
-                {% endif %}
-                <td><a href="{% url 'polls:results' question.id %}" style="color:green;">Show Result</a></td>
-            </tr>
+        <tr class="question">
+            {% if user.is_authenticated %}
+            <td><a href="{% url 'polls:detail' question.id %}"
+                   style="color:white;">{{ question.question_text }}</a></td>
+            {% else %}
+            <td><p style="color:white;"> {{ question.question_text }}</p></td>
+            {% endif %}
+            <td><a href="{% url 'polls:results' question.id %}"
+                   style="color:red;">Show Result</a></td>
+        </tr>
         {% endfor %}
     </table>
 </ul>
 {% else %}
 <p>No polls are available.</p>
 {% endif %}
+</body>
