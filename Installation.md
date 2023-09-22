@@ -45,6 +45,10 @@ for Windows, use this command:
 python -m venv venv
 . .\venv\Scripts\activate
 ```
+To deactivate virtual environment, use this command:
+```
+deactivate
+```
 
 ## Step 4: Create a `.env` file :
    
