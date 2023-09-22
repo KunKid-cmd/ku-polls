@@ -1,16 +1,18 @@
     {% load static %}
      <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+     <link rel="stylesheet" href="{% static 'polls/detail.css' %}">
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
-<fieldset>
-    <legend><h1 style="color:green;">{{ question.question_text }}</h1></legend>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<fieldset class="field">
+    <legend><h1 style="color:white;">{{ question.question_text }}</h1></legend>
+    {% if error_message %}<p style="color:white;"><strong>{{ error_message }}</strong></p>{% endif %}
         {% for choice in question.choice_set.all %}
             <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-            <label for="choice{{ forloop.counter }}" style="color:green;">{{ choice.choice_text }}</label><br>
+            <label for="choice{{ forloop.counter }}" style="color:white;">{{ choice.choice_text }}</label><br>
         {% endfor %}
 </fieldset>
-<input type="submit" value="Vote">
+    <input type="submit" value="Vote" class="vote">
+<a href="{% url 'polls:results' question.id %}" style="color:red;" class="result">Show Result</a>
+<a href="{% url 'polls:index' %}" style="color:red;" class="polls">Back to List of Polls</a>
 </form>
-<a href="{% url 'polls:results' question.id %}" style="color:green;">Show Result</a>
-<a href="{% url 'polls:index' %}" style="color:green;">Back to List of Polls</a>
+
