@@ -32,12 +32,8 @@
         </tr>
         {% for question in latest_question_list %}
         <tr class="question">
-            {% if user.is_authenticated %}
             <td><a href="{% url 'polls:detail' question.id %}"
                    style="color:white;">{{ question.question_text }}</a></td>
-            {% else %}
-            <td><p style="color:white;"> {{ question.question_text }}</p></td>
-            {% endif %}
             <td><a href="{% url 'polls:results' question.id %}"
                    style="color:red;">Show Result</a></td>
         </tr>
