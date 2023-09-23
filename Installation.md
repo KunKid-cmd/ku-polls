@@ -39,7 +39,7 @@ python -m venv venv           # Create the virtual environment
 for Windows, use this command:
 ```
 python -m venv venv
-. .\venv\Scripts\activate
+.\venv\Scripts\activate
 ```
 To deactivate virtual environment, use this command:
 ```

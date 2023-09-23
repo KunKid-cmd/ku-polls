@@ -2,6 +2,13 @@
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 <link rel="stylesheet" href="{% static 'polls/detail.css' %}">
 
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" style="color:red; margin-left: 50px;">Logout</a>
+    {% else %}
+        <h3 style="color:white; margin-left: 50px;">Please <a href="{% url 'login' %}" style="color:red;">Login</a>
+        to vote</h3>
+    {% endif %}
+
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset class="field">
@@ -10,7 +17,8 @@
     <p style="color:white;"><strong>{{ error_message }}</strong></p>
     {% endif %}
         {% for choice in question.choice_set.all %}
-            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"
+                   {% if prev_vote != None and choice.id == prev_vote.choice.id %} checked {% endif %}>
             <label for="choice{{ forloop.counter }}" style="color:white;">{{ choice.choice_text }}</label><br>
         {% endfor %}
 
